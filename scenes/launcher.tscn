@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://xxqy5eudwh1d"]
+
+[ext_resource type="Script" uid="uid://cmm2olpsrr4cg" path="res://scripts/launcher.gd" id="1_su428"]
+[ext_resource type="Texture2D" uid="uid://behrv2ehj7s21" path="res://assets/PNG/Retina/button_grey.png" id="1_ut831"]
+[ext_resource type="Texture2D" uid="uid://1htqto4th7yj" path="res://assets/PNG/Default/number_1.png" id="2_cm6pl"]
+[ext_resource type="Texture2D" uid="uid://d237wnehgj3yv" path="res://assets/PNG/Default/number_2.png" id="3_wr5gk"]
+[ext_resource type="Texture2D" uid="uid://diexclmj66216" path="res://assets/PNG/Default/number_3.png" id="4_jkygn"]
+[ext_resource type="Texture2D" uid="uid://jlq432saph01" path="res://assets/PNG/Default/number_4.png" id="5_su428"]
+[ext_resource type="Texture2D" uid="uid://dekk36iewa8g7" path="res://assets/PNG/Default/number_5.png" id="6_0eg6t"]
+[ext_resource type="Texture2D" uid="uid://dd1rc0xqrbcs" path="res://assets/PNG/Default/number_6.png" id="7_0pve4"]
+[ext_resource type="Texture2D" uid="uid://ckmrypj5ojbaa" path="res://assets/PNG/Default/number_7.png" id="8_3si1s"]
+[ext_resource type="Texture2D" uid="uid://comlntxnpabe5" path="res://assets/PNG/Default/number_8.png" id="9_xur2m"]
+[ext_resource type="Texture2D" uid="uid://lvapek7dw7jt" path="res://assets/PNG/Default/number_9.png" id="10_50jqp"]
+[ext_resource type="Texture2D" uid="uid://ctmq1weu3ie0u" path="res://assets/PNG/Default/number_0.png" id="11_g5ll4"]
+[ext_resource type="Script" uid="uid://q3d3lv7ybk76" path="res://scripts/sensor.gd" id="13_0eg6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m736f"]
+size = Vector2(38, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_su428"]
+size = Vector2(38.0901, 1.9992199)
+
+[node name="Launcher" type="AnimatableBody2D"]
+z_index = -1
+scale = Vector2(1.733, 2)
+collision_layer = 2
+script = ExtResource("1_su428")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5707964
+scale = Vector2(0.53, 0.35)
+texture = ExtResource("1_ut831")
+
+[node name="1" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-110.26701, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("2_cm6pl")
+
+[node name="2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-86.665115, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("3_wr5gk")
+
+[node name="3" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-61.796173, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("4_jkygn")
+
+[node name="4" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-35.660347, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("5_su428")
+
+[node name="5" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-10.791496, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("6_0eg6t")
+
+[node name="6" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(14.077362, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("7_0pve4")
+
+[node name="7" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(37.679214, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("8_3si1s")
+
+[node name="8" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(62.548126, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("9_xur2m")
+
+[node name="9" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(87.41696, 0)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("10_50jqp")
+
+[node name="10" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(111.018585, 9.4999695)
+rotation = 1.5707964
+scale = Vector2(0.97669464, 0.43310863)
+texture = ExtResource("11_g5ll4")
+
+[node name="11" type="Sprite2D" parent="Sprite2D/10"]
+position = Vector2(-20.477234, 0)
+texture = ExtResource("2_cm6pl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m736f")
+
+[node name="Sensor" type="Area2D" parent="."]
+position = Vector2(0, -68.5)
+collision_layer = 2
+script = ExtResource("13_0eg6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor"]
+position = Vector2(2.3283064e-10, -0.5)
+rotation = 3.1413214
+scale = Vector2(1, 0.99999976)
+shape = SubResource("RectangleShape2D_su428")
+
+[connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]

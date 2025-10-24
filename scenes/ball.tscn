@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5lrwd7uxyxiv"]
+
+[ext_resource type="Script" uid="uid://divi141dx0yni" path="res://scripts/ball.gd" id="1_cxlvu"]
+[ext_resource type="Texture2D" uid="uid://chsv20pwcjjh3" path="res://assets/Spritesheet/rollingBall_sheet.png" id="1_x8fbi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cxlvu"]
+friction = 0.05
+bounce = 2.25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s4qf"]
+atlas = ExtResource("1_x8fbi")
+region = Rect2(208, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7cbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s4qf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dx81"]
+radius = 18.0
+
+[node name="Ball" type="RigidBody2D"]
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_cxlvu")
+continuous_cd = 2
+contact_monitor = true
+linear_damp = 0.1
+angular_damp = 0.2
+script = ExtResource("1_cxlvu")
+min_speed = 120.0
+target_speed = 2000.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+scale = Vector2(0.554, 0.55)
+sprite_frames = SubResource("SpriteFrames_f7cbr")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+shape = SubResource("CircleShape2D_4dx81")

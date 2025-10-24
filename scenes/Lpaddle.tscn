@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://hd3qir5auu7i"]
+
+[ext_resource type="Texture2D" uid="uid://bgg8dbppu1smu" path="res://assets/PNG/Retina/laser.png" id="1_4uyel"]
+[ext_resource type="Script" uid="uid://clquwxrevasmb" path="res://scripts/lpaddle.gd" id="1_nryf2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nryf2"]
+radius = 13.160254
+height = 242.5974
+
+[node name="Lpaddle" type="AnimatableBody2D"]
+collision_layer = 2
+script = ExtResource("1_nryf2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(92.00001, 54.000004)
+rotation = -1.0471976
+shape = SubResource("CapsuleShape2D_nryf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(92, 54)
+rotation = -1.0471976
+texture = ExtResource("1_4uyel")

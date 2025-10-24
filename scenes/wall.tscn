@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpgbv4q6njy4l"]
+
+[ext_resource type="Texture2D" uid="uid://dxnmkas3rr7jl" path="res://assets/PNG/Retina/block_narrow.png" id="1_wykyb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wykyb"]
+friction = 0.15
+bounce = 0.65
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ktk7"]
+size = Vector2(66, 254)
+
+[node name="wall" type="StaticBody2D"]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_wykyb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wykyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2ktk7")

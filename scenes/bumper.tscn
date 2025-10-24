@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm28ria524vm5"]
+
+[ext_resource type="Script" uid="uid://5gj4usuqfkjx" path="res://scripts/bumper.gd" id="1_y1o0u"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6an6i"]
+friction = 0.1
+bounce = 1.0
+
+[node name="Bumper" type="AnimatableBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_6an6i")
+script = ExtResource("1_y1o0u")
