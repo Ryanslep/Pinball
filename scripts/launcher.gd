@@ -13,20 +13,20 @@ extends AnimatableBody2D
 @export var action_name: String = "plunger"   # hold to charge, release to fire
 @export var direction: Vector2 = Vector2.UP   # launch direction (normalized at runtime)
 @export var max_pull_dist: float = 240.0       # px you can pull back (visual + physical travel)
-@export var charge_rate: float = 120.0        # px/s while holding
+@export var charge_rate: float = 180.0        # px/s while holding
 
 @export var head_gap_px: float = 4.0      # how far to pull back after the hit
 @export var head_gap_time: float = 0.10   # how long to hold the gap before restoring
 # Make tiny pulls weak:
 @export var deadzone_px: float = 10.0         # pulls below this are ignored
-@export var power_curve: float = 2.5          # >1 weakens early pull, try 2.0–3.0
+@export var power_curve: float = 5          # >1 weakens early pull, try 2.0–3.0
 
 # Snap-forward timing scales with pull (smaller pull -> slower return -> less kick)
 @export var min_return_time: float = 0.1     # used for tiny pulls (gentler)
 @export var base_return_time: float = 0.06    # used for full pull (snappier)
 
 # Optional extra impulse (only if not relying purely on physical hit)
-@export var use_extra_impulse: bool = false
+@export var use_extra_impulse: bool = true
 @export var max_impulse: float = 3000.0       # scales 0..max with t; only used if use_extra_impulse = true
 
 # Physics material for the head/body (tame bounce to avoid jitter)
@@ -44,7 +44,6 @@ var _pull: float = 0.0
 var _tw: Tween
 var _rest_global: Vector2
 var _last_global: Vector2
-var _firing: bool = false
 var _captured_ball: RigidBody2D = null
 var _sensor_enabled: bool = true
 var _state: int = LaunchState.IDLE

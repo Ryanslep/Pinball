@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://6skntrxkk538"]
+[gd_scene load_steps=14 format=3 uid="uid://6skntrxkk538"]
 
 [ext_resource type="Script" uid="uid://ceuc3b3187r6b" path="res://scripts/game_manager.gd" id="1_0tnpc"]
 [ext_resource type="Script" uid="uid://cu2xvj31cb2sl" path="res://scripts/game.gd" id="1_p57ef"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdnkrmbydhwh8" path="res://scenes/Rpaddle.tscn" id="6_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cpgbv4q6njy4l" path="res://scenes/wall.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://xxqy5eudwh1d" path="res://scenes/launcher.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://b6fcur62i3i0h" path="res://scenes/spinner.tscn" id="10_kvpfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("2_yqjtg")
@@ -726,7 +727,7 @@ script = ExtResource("1_p57ef")
 script = ExtResource("1_0tnpc")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(0, 19.283535)
+position = Vector2(-19, 19.283535)
 tile_set = SubResource("TileSet_u5sy4")
 format = 2
 layer_0/name = "bg"
@@ -755,7 +756,7 @@ position = Vector2(6, 1034.2063)
 
 [node name="Spawn" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(470, 686)
+position = Vector2(468, 686)
 
 [node name="Launcher" parent="." instance=ExtResource("9_0tnpc")]
 unique_name_in_owner = true
@@ -764,23 +765,25 @@ position = Vector2(470, 848)
 [node name="Obstacles" type="Node" parent="."]
 
 [node name="green_block" parent="Obstacles" instance=ExtResource("4_iywne")]
-position = Vector2(-305, 680)
+position = Vector2(-432, 688)
+impulse_strength = 0.0
 
 [node name="green_block5" parent="Obstacles" instance=ExtResource("4_iywne")]
-position = Vector2(306, 808)
-rotation = 3.1415927
+position = Vector2(307, 808)
+rotation = 4.712389
+impulse_strength = 0.0
 
 [node name="green_block4" parent="Obstacles" instance=ExtResource("4_iywne")]
-position = Vector2(-304, 808)
-rotation = 1.5707964
+position = Vector2(-307, 808)
+impulse_strength = 0.0
 
 [node name="green_block2" parent="Obstacles" instance=ExtResource("4_iywne")]
-position = Vector2(305.99985, 680.00006)
-rotation = -1.5729313
+position = Vector2(304, 176)
+rotation = -3.1415927
 
 [node name="green_block3" parent="Obstacles" instance=ExtResource("4_iywne")]
-position = Vector2(-433.00003, 681.00006)
-rotation = -1.5729313
+position = Vector2(-440, 176)
+rotation = 1.5707964
 
 [node name="Lpaddle" parent="Obstacles" instance=ExtResource("5_gee14")]
 position = Vector2(-231, 864)
@@ -788,10 +791,29 @@ position = Vector2(-231, 864)
 [node name="Rpaddle" parent="Obstacles" instance=ExtResource("6_0tnpc")]
 position = Vector2(231, 864)
 
+[node name="Spinner" parent="Obstacles" instance=ExtResource("10_kvpfn")]
+position = Vector2(-352, -192)
+
+[node name="Spinner2" parent="Obstacles" instance=ExtResource("10_kvpfn")]
+position = Vector2(-224, -296)
+
+[node name="Spinner3" parent="Obstacles" instance=ExtResource("10_kvpfn")]
+position = Vector2(-224, -88)
+
 [node name="Walls" type="Node" parent="."]
 
 [node name="wall" parent="Walls" instance=ExtResource("6_p57ef")]
 position = Vector2(-536, 872)
+
+[node name="wall30" parent="Walls" instance=ExtResource("6_p57ef")]
+position = Vector2(-288.00003, 680.00006)
+rotation = -0.7853982
+scale = Vector2(0.57684225, 1.0244973)
+
+[node name="wall31" parent="Walls" instance=ExtResource("6_p57ef")]
+position = Vector2(248, 736.00006)
+rotation = 0.7853982
+scale = Vector2(-0.3291387, 0.6344799)
 
 [node name="wall2" parent="Walls" instance=ExtResource("6_p57ef")]
 position = Vector2(-536, 618)

@@ -1,6 +1,6 @@
 extends AnimatableBody2D
 
-@export var impulse_strength: float = 600.0
+@export var impulse_strength: float = 100.0
 
 func _on_sensor_body_entered(body: Node2D) -> void:
 	if body:
