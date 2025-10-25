@@ -1,11 +1,111 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm28ria524vm5"]
+[gd_scene load_steps=11 format=3 uid="uid://cm28ria524vm5"]
 
 [ext_resource type="Script" uid="uid://5gj4usuqfkjx" path="res://scripts/bumper.gd" id="1_y1o0u"]
+[ext_resource type="Texture2D" uid="uid://bl5wcinufygvv" path="res://assets/PNG/Default/hole_large_end_alt.png" id="2_xqsws"]
+[ext_resource type="Texture2D" uid="uid://wn7i4qqgfrsg" path="res://assets/PNG/Default/hole_large.png" id="3_5gwgy"]
+[ext_resource type="Texture2D" uid="uid://ch6tt5l55bots" path="res://assets/PNG/Default/star.png" id="4_cks11"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6an6i"]
-friction = 0.1
-bounce = 1.0
+[sub_resource type="SpriteFrames" id="SpriteFrames_kfm4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5gwgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xqsws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5gwgy")
+}],
+"loop": false,
+"name": &"Bump",
+"speed": 10.0
+}]
 
-[node name="Bumper" type="AnimatableBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_6an6i")
+[sub_resource type="Animation" id="Animation_2rxvj"]
+resource_name = "Bumped"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [null],
+"method": &"_on_area_2d_body_entered"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_03aum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5pq2m"]
+_data = {
+&"Bumped": SubResource("Animation_2rxvj"),
+&"RESET": SubResource("Animation_03aum")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qx4y"]
+radius = 34.999996
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqsws"]
+radius = 40.0
+
+[node name="Bumper" type="StaticBody2D"]
+collision_layer = 2
 script = ExtResource("1_y1o0u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(1.1999999, 1.1999999)
+sprite_frames = SubResource("SpriteFrames_kfm4k")
+animation = &"Bump"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_5pq2m")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+scale = Vector2(1.3333333, 1.3333333)
+texture = ExtResource("4_cks11")
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+shape = SubResource("CircleShape2D_8qx4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xqsws")
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

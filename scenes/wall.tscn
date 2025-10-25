@@ -8,7 +8,7 @@ bounce = 0.65
 absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ktk7"]
-size = Vector2(66, 254)
+size = Vector2(52, 242)
 
 [node name="wall" type="StaticBody2D"]
 collision_layer = 2
