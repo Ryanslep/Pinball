@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6skntrxkk538"]
+[gd_scene load_steps=18 format=3 uid="uid://6skntrxkk538"]
 
 [ext_resource type="Script" uid="uid://ceuc3b3187r6b" path="res://scripts/game_manager.gd" id="1_0tnpc"]
 [ext_resource type="Script" uid="uid://cu2xvj31cb2sl" path="res://scripts/game.gd" id="1_p57ef"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://hd3qir5auu7i" path="res://scenes/Lpaddle.tscn" id="5_gee14"]
 [ext_resource type="PackedScene" uid="uid://cdnkrmbydhwh8" path="res://scenes/Rpaddle.tscn" id="6_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cpgbv4q6njy4l" path="res://scenes/wall.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://blc6xbb7bmhr" path="res://scenes/springboard.tscn" id="8_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cm28ria524vm5" path="res://scenes/bumper.tscn" id="8_trtic"]
 [ext_resource type="PackedScene" uid="uid://xxqy5eudwh1d" path="res://scenes/launcher.tscn" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://b6fcur62i3i0h" path="res://scenes/spinner.tscn" id="10_kvpfn"]
@@ -763,7 +764,7 @@ position = Vector2(6, 1034.2063)
 
 [node name="Spawn" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(468, 686)
+position = Vector2(470, 688)
 
 [node name="Launcher" parent="." instance=ExtResource("9_0tnpc")]
 unique_name_in_owner = true
@@ -771,24 +772,59 @@ position = Vector2(470, 848)
 
 [node name="Obstacles" type="Node" parent="."]
 
+[node name="Springboard-base" parent="Obstacles" instance=ExtResource("8_ir15t")]
+position = Vector2(376.00003, -72.00001)
+rotation = 2.3561945
+
+[node name="Springboard-base2" parent="Obstacles" instance=ExtResource("8_ir15t")]
+position = Vector2(-447.99994, -607.99994)
+rotation = 3.6651917
+
+[node name="Springboard-base3" parent="Obstacles" instance=ExtResource("8_ir15t")]
+position = Vector2(496, -592)
+
+[node name="Springboard-base4" parent="Obstacles" instance=ExtResource("8_ir15t")]
+position = Vector2(-440, -200)
+rotation = 3.1415927
+
 [node name="Bumper" parent="Obstacles" instance=ExtResource("8_trtic")]
-position = Vector2(0, 351)
+position = Vector2(192, -328)
 
 [node name="Bumper2" parent="Obstacles" instance=ExtResource("8_trtic")]
-position = Vector2(168, 352)
+position = Vector2(128, 384)
 
 [node name="Bumper3" parent="Obstacles" instance=ExtResource("8_trtic")]
-position = Vector2(-176, 348)
+position = Vector2(-224, 110)
 
 [node name="Bumper4" parent="Obstacles" instance=ExtResource("8_trtic")]
-position = Vector2(-88, 236)
+position = Vector2(-395, -416)
 
 [node name="Bumper5" parent="Obstacles" instance=ExtResource("8_trtic")]
-position = Vector2(80, 236)
+position = Vector2(-80, -192)
 
 [node name="green_block5" parent="Obstacles" instance=ExtResource("4_iywne")]
 position = Vector2(304, 48)
 rotation = 4.712389
+impulse_strength = 0.0
+
+[node name="green_block12" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(-64, -576)
+rotation = 4.712389
+impulse_strength = 0.0
+
+[node name="green_block13" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(-64, -448)
+rotation = 3.1415927
+impulse_strength = 0.0
+
+[node name="green_block14" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(64, -448)
+rotation = 1.5707964
+impulse_strength = 0.0
+
+[node name="green_block15" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(64, -576)
+rotation = 6.2831855
 impulse_strength = 0.0
 
 [node name="green_block4" parent="Obstacles" instance=ExtResource("4_iywne")]
@@ -803,6 +839,32 @@ rotation = -3.1415927
 position = Vector2(-440, 176)
 rotation = 1.5707964
 
+[node name="green_block6" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(-440, 48)
+impulse_strength = 0.0
+
+[node name="green_block7" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(-440, 176)
+rotation = 1.5707964
+
+[node name="green_block8" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(-440, 48)
+impulse_strength = 0.0
+
+[node name="green_block10" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(-64, -960)
+rotation = 3.1415927
+impulse_strength = 0.0
+
+[node name="green_block11" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(64, -960)
+rotation = 1.5707964
+impulse_strength = 0.0
+
+[node name="green_block9" parent="Obstacles" instance=ExtResource("4_iywne")]
+position = Vector2(-440, 176)
+rotation = 1.5707964
+
 [node name="Lpaddle" parent="Obstacles" instance=ExtResource("5_gee14")]
 position = Vector2(-231, 864)
 
@@ -810,13 +872,13 @@ position = Vector2(-231, 864)
 position = Vector2(231, 864)
 
 [node name="Spinner" parent="Obstacles" instance=ExtResource("10_kvpfn")]
-position = Vector2(-352, -192)
+position = Vector2(144, -808)
 
 [node name="Spinner2" parent="Obstacles" instance=ExtResource("10_kvpfn")]
-position = Vector2(-224, -296)
+position = Vector2(-267, -672)
 
 [node name="Spinner3" parent="Obstacles" instance=ExtResource("10_kvpfn")]
-position = Vector2(-224, -88)
+position = Vector2(-360, 432)
 
 [node name="Walls" type="Node" parent="."]
 

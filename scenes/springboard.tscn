@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://blc6xbb7bmhr"]
+
+[ext_resource type="Script" uid="uid://chnq3ix4b7pis" path="res://scripts/springboard.gd" id="1_nhloo"]
+[ext_resource type="Texture2D" uid="uid://bp5t2xv3uwgrw" path="res://assets/PNG/Default/button_yellow.png" id="2_0x565"]
+[ext_resource type="Texture2D" uid="uid://b0huj6k13vki5" path="res://assets/PNG/Default/button_grey.png" id="3_7idcp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuxwr"]
+size = Vector2(112, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5elq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0x565")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_oe4dy"]
+resource_name = "launch"
+length = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12),
+"transitions": PackedFloat32Array(0.009618323, 0.13397263, 0.019915022),
+"update": 0,
+"values": [Vector2(3.4969105e-07, 8), Vector2(1.0490733e-06, 24), Vector2(3.4969105e-07, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_ysabj"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7a4cr"]
+_data = {
+&"RESET": SubResource("Animation_ysabj"),
+&"launch": SubResource("Animation_oe4dy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkx3r"]
+size = Vector2(112, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wlxf"]
+size = Vector2(128, 16)
+
+[node name="Springboard" type="StaticBody2D"]
+rotation = 1.5707964
+collision_layer = 2
+
+[node name="Springboard" type="StaticBody2D" parent="."]
+position = Vector2(3.4969105e-07, 8)
+collision_layer = 2
+script = ExtResource("1_nhloo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Springboard"]
+position = Vector2(3.4969116e-07, 4)
+shape = SubResource("RectangleShape2D_vuxwr")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Springboard"]
+position = Vector2(1.3987643e-06, 4)
+scale = Vector2(0.875, 0.1509434)
+sprite_frames = SubResource("SpriteFrames_f5elq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Springboard/Sprite2D"]
+root_motion_track = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_7a4cr")
+}
+
+[node name="Area2D" type="Area2D" parent="Springboard"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Springboard/Area2D"]
+position = Vector2(1.3987644e-06, 4)
+shape = SubResource("RectangleShape2D_qkx3r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Springboard"]
+z_index = -1
+position = Vector2(2.016968e-09, -8.04614)
+rotation = 1.5707964
+scale = Vector2(0.123297594, 0.13647233)
+texture = ExtResource("3_7idcp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.3018868)
+texture = ExtResource("3_7idcp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1wlxf")
+
+[connection signal="body_entered" from="Springboard/Area2D" to="Springboard" method="_on_area_2d_body_entered"]
