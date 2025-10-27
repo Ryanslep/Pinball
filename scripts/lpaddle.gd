@@ -45,3 +45,7 @@ func _feed_motion_to_physics(dt: float) -> void:
 	_last_rot = current_rot
 	# Tell the physics engine our instantaneous angular velocity.
 	constant_angular_velocity = omega * swing_energy_gain
+
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	GameManager.add_score(10)

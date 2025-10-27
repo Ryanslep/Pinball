@@ -70,3 +70,4 @@ scale = Vector2(14078.614, -1712.0494)
 polygon = PackedVector2Array(0.00092338637, 0.007593238, 0.0009233863, 0.03212524, 0.00056823774, 0.036213905, 0.00035514857, 0.037382096, -0.00028411887, 0.037382096, -0.00049720804, 0.036213905, -0.0009233863, 0.032709334, -0.0009233863, 0.017522857, -0.0012785349, 0.016354667, -0.0016336835, 0.014018286, -0.0019888321, 0.0105137145, -0.0021308914, 0.0075932383)
 
 [connection signal="body_entered" from="Spinnerbody/Sensor" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Spinnerbody/Sensor" to="Spinnerbody" method="_on_sensor_body_entered"]

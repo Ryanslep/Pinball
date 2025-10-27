@@ -21,5 +21,3 @@ func _on_body_entered(body: Node2D) -> void:
 		_fired = true
 		GameManager.handle_ball_lost(body)   # or GameManager…, use your autoload name
 		_reset_timer.start(0.2)               # small debounce window
-
-		GameManager.handle_ball_lost(body)

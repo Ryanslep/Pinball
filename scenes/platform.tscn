@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwsfto0sw4g5y"]
+
+[ext_resource type="Texture2D" uid="uid://dxnmkas3rr7jl" path="res://assets/PNG/Retina/block_narrow.png" id="1_ba0x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(57.99999, 244)
+
+[node name="Platform" type="AnimatableBody2D"]
+scale = Vector2(1, 0.6)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
+texture = ExtResource("1_ba0x2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_nlgqw")

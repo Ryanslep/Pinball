@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://hd3qir5auu7i"]
+[gd_scene load_steps=5 format=3 uid="uid://hd3qir5auu7i"]
 
 [ext_resource type="Texture2D" uid="uid://bgg8dbppu1smu" path="res://assets/PNG/Retina/laser.png" id="1_4uyel"]
 [ext_resource type="Script" uid="uid://clquwxrevasmb" path="res://scripts/lpaddle.gd" id="1_nryf2"]
@@ -6,6 +6,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nryf2"]
 radius = 13.160254
 height = 242.5974
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d8hdd"]
+radius = 13.163193
+height = 240.40575
 
 [node name="Lpaddle" type="AnimatableBody2D"]
 collision_layer = 2
@@ -20,3 +24,12 @@ shape = SubResource("CapsuleShape2D_nryf2")
 position = Vector2(92, 54)
 rotation = -1.0471976
 texture = ExtResource("1_4uyel")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(91.99999, 53.999996)
+rotation = -1.0471976
+shape = SubResource("CapsuleShape2D_d8hdd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

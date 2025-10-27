@@ -24,6 +24,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		# Simple cooldown
 		get_tree().create_timer(launch_cooldown).connect("timeout", Callable(self, "_on_launch_reset"))
 		animation_player.play("launch")
+		GameManager.register_hit(60)
 
 func _on_launch_reset() -> void:
 	can_launch = true

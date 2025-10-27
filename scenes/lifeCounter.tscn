@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://doogurqoaaoh0"]
+
+[ext_resource type="Texture2D" uid="uid://c5b5tug86ltgt" path="res://assets/PNG/Default/ball_blue_large.png" id="1_l5gwd"]
+[ext_resource type="Texture2D" uid="uid://ctlmqqlgvmy6x" path="res://assets/PNG/Default/ball_red_large.png" id="2_82dpn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_864o2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l5gwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_82dpn")
+}],
+"loop": false,
+"name": &"lose_life",
+"speed": 5.0
+}]
+
+[node name="LifeCounter" type="AnimatedSprite2D"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_864o2")
+animation = &"lose_life"

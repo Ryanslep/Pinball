@@ -18,6 +18,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		# Simple cooldown
 		get_tree().create_timer(bump_cooldown).connect("timeout", Callable(self, "_on_bump_reset"))
 		animated_sprite_2d.play("Bump")
+		GameManager.register_hit(100)
 
 func _on_bump_reset() -> void:
 	can_bump = true

@@ -15,7 +15,7 @@ extends AnimatableBody2D
 @export var max_pull_dist: float = 240.0       # px you can pull back (visual + physical travel)
 @export var charge_rate: float = 240.0        # px/s while holding
 
-@export var head_gap_px: float = 4.0      # how far to pull back after the hit
+@export var head_gap_px: float = 2.0      # how far to pull back after the hit
 @export var head_gap_time: float = 0.10   # how long to hold the gap before restoring
 # Make tiny pulls weak:
 @export var deadzone_px: float = 10.0         # pulls below this are ignored

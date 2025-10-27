@@ -25,3 +25,7 @@ func _physics_process(delta: float) -> void:
 	# Cap rotation speed so it doesn’t go crazy
 	if abs(angular_velocity) > max_angular_speed:
 		angular_velocity = signf(angular_velocity) * max_angular_speed
+
+
+func _on_sensor_body_entered(_body: Node2D) -> void:
+	GameManager.add_score(30)
