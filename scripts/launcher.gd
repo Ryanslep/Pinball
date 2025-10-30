@@ -199,7 +199,7 @@ func _on_sensor_body_entered(body: Node2D) -> void:
 		_captured_ball = body
 		_captured_ball.linear_velocity = Vector2.ZERO
 		_captured_ball.angular_velocity = 0.0
-		_captured_ball.set_deferred("freeze", true)
+		#_captured_ball.set_deferred("freeze", true)
 
 func _unfreeze_captured_ball() -> void:
 	if _captured_ball and is_instance_valid(_captured_ball):

@@ -19,5 +19,5 @@ func _capture_ball(body: RigidBody2D) -> void:
 	# Safe to change now
 	body.linear_velocity = Vector2.ZERO
 	body.angular_velocity = 0.0
-	body.set_deferred("freeze", true)  # freeze must be deferred (engine-side state)
+	#body.set_deferred("freeze", true)  # freeze must be deferred (engine-side state)
 	# Optional snap away from the plunger head; also defer to be extra safe

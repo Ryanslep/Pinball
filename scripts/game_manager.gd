@@ -17,6 +17,9 @@ enum DecayMode { DROP_TO_ZERO, STEP_DOWN }
 signal num_balls_changed(num_balls: int)
 signal score_changed(new_score: int)
 signal combo_changed(new_combo: int)
+signal game_over
+
+var _is_game_over: bool = false
 
 var score: int = 0:
 	set(value):
@@ -52,6 +55,13 @@ func _ready() -> void:
 	_timer.timeout.connect(_on_respawn_timeout)
 
 	_cache_scene_refs()
+	
+
+func reset_state(new_lives: int = 3) -> void:
+	_is_game_over = false
+	num_balls = new_lives
+	score = 0
+	combo = 0
 
 func add_score(points: int) -> void:
 	var mult:= get_multiplier()
@@ -116,11 +126,21 @@ func _cache_scene_refs() -> void:
 func handle_ball_lost(ball: Node) -> void:
 	if is_instance_valid(ball):
 		ball.queue_free()
+	
+	num_balls -= 1
+	
+	if num_balls <= 0:
+		_is_game_over = true
+		_timer.stop()
+		game_over.emit()
+		combo = 0
+		return
+	
 	_timer.stop()
 	_timer.wait_time = respawn_delay
 	_timer.start()
 	reset_combo()
-	num_balls -= 1
+	
 	
 
 func _on_respawn_timeout() -> void:

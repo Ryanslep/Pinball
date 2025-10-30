@@ -789,6 +789,9 @@ script = ExtResource("1_0tnpc")
 unique_name_in_owner = true
 script = ExtResource("3_rysoc")
 
+[node name="EndScreen" parent="HUD" instance=ExtResource("3_1kice")]
+visible = false
+
 [node name="Life1" parent="HUD" instance=ExtResource("3_ca42v")]
 position = Vector2(600, -142)
 
@@ -814,9 +817,6 @@ offset_bottom = -170.0
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "Combo :"
-
-[node name="EndScreen" parent="HUD" instance=ExtResource("3_1kice")]
-visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-16, 16.283535)
